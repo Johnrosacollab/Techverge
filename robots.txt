@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /testing.html
+
+Sitemap: https://www.gameverseindia.com/sitemap.xml

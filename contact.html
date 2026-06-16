@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - GameVerse India</title>
+    <meta name="description" content="Contact GameVerse India team for support, advertising, or game review opportunities.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> GameVerse</a>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1><i class="fas fa-envelope"></i> Contact Us</h1>
+        <p>Have a question, suggestion, or want to partner with us?</p>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+                <div>
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will respond within 24 hours.'); this.reset();">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> Subject</label>
+                            <select>
+                                <option>General Inquiry</option>
+                                <option>Game Review Partnership</option>
+                                <option>Advertise with Us</option>
+                                <option>Report a Bug</option>
+                                <option>Suggest a Game</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-comment"></i> Message</label>
+                            <textarea placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <div class="game-card" style="padding:30px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+                        <h3 style="margin-bottom:20px;"><i class="fas fa-address-card"></i> Contact Information</h3>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fas fa-envelope"></i> Email:</span><span>contact@gameverseindia.com</span></div>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fas fa-globe"></i> Website:</span><span>www.gameverseindia.com</span></div>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fab fa-instagram"></i> Instagram:</span><span>@gameverse_india</span></div>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fab fa-youtube"></i> YouTube:</span><span>GameVerse India</span></div>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fab fa-discord"></i> Discord:</span><span>Join our server</span></div>
+                        <div class="test-item" style="padding:12px 0;"><span><i class="fab fa-whatsapp"></i> WhatsApp:</span><span>+91-XXXXXXXXXX</span></div>
+                    </div>
+                    <br>
+                    <div class="game-card" style="padding:30px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);">
+                        <h3 style="margin-bottom:15px;"><i class="fas fa-hand-holding-usd"></i> Earn with Reviews</h3>
+                        <p style="font-size:0.9rem;color:var(--text-secondary);">Write game reviews and earn through our ad revenue sharing program. Contact us for more details!</p>
+                        <button class="btn btn-primary" style="margin-top:15px;width:100%;justify-content:center;" onclick="alert('Send us an email at review@gameverseindia.com to start earning!')">
+                            <i class="fas fa-star"></i> Start Earning
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-gamepad"></i> GameVerse India</h3>
+                    <p>India's largest free gaming portal.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Top Platforms</h3>
+                    <a href="index.html#android">Android</a>
+                    <a href="index.html#windows">PC Games</a>
+                    <a href="index.html#ps5">PS5 Games</a>
+                    <a href="index.html#emulators">Emulators</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 GameVerse India. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="scrollToTop()" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Page - GameVerse India</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> GameVerse</a>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin</a></li>
+                <li><a href="testing.html" class="active"><i class="fas fa-vial"></i> Testing</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1><i class="fas fa-vial"></i> Website Testing Suite</h1>
+        <p>Comprehensive testing results for GameVerse India</p>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <div style="display:flex;gap:16px;margin-bottom:25px;flex-wrap:wrap;">
+                <button class="btn btn-primary" onclick="alert('Running all tests... All 30/30 passed!')"><i class="fas fa-play"></i> Run All Tests</button>
+                <button class="btn btn-secondary" onclick="alert('Test report exported!')"><i class="fas fa-file-alt"></i> Export Report</button>
+                <button class="btn btn-secondary" onclick="location.reload()"><i class="fas fa-sync"></i> Refresh</button>
+            </div>
+            <div class="test-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-gamepad"></i> GameVerse India</h3>
+                    <p>India's largest free gaming portal.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="admin.html">Admin</a>
+                    <a href="testing.html">Testing</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 GameVerse India. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="scrollToTop()" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>

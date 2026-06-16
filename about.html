@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GameVerse India</title>
+    <meta name="description" content="About GameVerse India - India's largest free gaming portal. Learn about our mission to provide free games for all platforms.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> GameVerse</a>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html#categories"><i class="fas fa-layer-group"></i> Categories</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1><i class="fas fa-info-circle"></i> About GameVerse India</h1>
+        <p>India's most comprehensive free gaming platform</p>
+    </section>
+
+    <section class="content-page">
+        <div class="container">
+            <h2>🎯 Our Mission</h2>
+            <p>GameVerse India is dedicated to providing <strong>free, high-quality games</strong> to gamers across India and the world. We believe gaming should be accessible to everyone, regardless of their device or platform.</p>
+
+            <h3>🌍 What We Offer</h3>
+            <p>We cover games for <strong>15+ platforms</strong> including Android, iOS, Windows PC, Mac, PlayStation (PS2/PS4/PS5), PSP, Nintendo Switch, and even retro platforms like Java, Symbian, and BlackBerry. We also specialize in emulator games for PPSSPP, Dolphin, ePSXe, and RetroArch.</p>
+
+            <h3>📊 Our Categories</h3>
+            <p>From Action, Adventure, RPG, Strategy, Racing, Fighting, Shooting (TPP/FPP), Horror, Simulation, Sports, Puzzle to Multiplayer — we've got every genre covered.</p>
+
+            <h3>💰 Earn with Us</h3>
+            <p>GameVerse allows reviewers to earn through ad revenue. Write game reviews, share your expertise, and earn money. Our ads.txt is configured for Google AdSense and other ad networks.</p>
+
+            <h3>👥 Our Community</h3>
+            <p>With <strong>50,000+ active gamers</strong> and growing, GameVerse India is building the largest gaming community in the country. Join us and be part of the revolution!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-gamepad"></i> GameVerse India</h3>
+                    <p>India's largest free gaming portal.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Top Platforms</h3>
+                    <a href="index.html#android">Android</a>
+                    <a href="index.html#windows">PC Games</a>
+                    <a href="index.html#ps5">PS5 Games</a>
+                    <a href="index.html#emulators">Emulators</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 GameVerse India. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="scrollToTop()" id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>

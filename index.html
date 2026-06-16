@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse India - Free Games for All Platforms | PC, Mobile, Console, Emulator Games</title>
+    <meta name="description" content="GameVerse India - Download free games for Android, iOS, PC, PlayStation, PSP, Nintendo, Emulators and more. Action, Adventure, Racing, Shooting games in Hindi.">
+    <meta name="keywords" content="free games download, android games, pc games, ps5 games, emulator games, hindi gaming website, retro games, java games, symbian games">
+    <meta name="author" content="GameVerse India">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.gameverseindia.com/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GameVerse India - Free Games for All Platforms">
+    <meta property="og:description" content="Download free games for Android, iOS, PC, PlayStation, Emulators and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gameverseindia.com/">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "GameVerse India",
+        "url": "https://www.gameverseindia.com/",
+        "description": "Free games download platform for all devices",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.gameverseindia.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gamepad"></i> GameVerse
+            </a>
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown(this)">
+                        <i class="fas fa-layer-group"></i> Categories <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#action"><i class="fas fa-bolt"></i> Action</a></li>
+                        <li><a href="#adventure"><i class="fas fa-compass"></i> Adventure</a></li>
+                        <li><a href="#racing"><i class="fas fa-car"></i> Racing</a></li>
+                        <li><a href="#shooting"><i class="fas fa-crosshairs"></i> Shooting (FPP/TPP)</a></li>
+                        <li><a href="#strategy"><i class="fas fa-chess"></i> Strategy</a></li>
+                        <li><a href="#rpg"><i class="fas fa-dragon"></i> Role-Playing</a></li>
+                        <li><a href="#fighting"><i class="fas fa-fist-raised"></i> Fighting</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown(this)">
+                        <i class="fas fa-device"></i> Platforms <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#android"><i class="fab fa-android"></i> Android</a></li>
+                        <li><a href="#ios"><i class="fab fa-apple"></i> iOS / iPad</a></li>
+                        <li><a href="#windows"><i class="fab fa-windows"></i> Windows PC</a></li>
+                        <li><a href="#mac"><i class="fab fa-apple"></i> Mac</a></li>
+                        <li><a href="#playstation"><i class="fab fa-playstation"></i> PS2 / PS4 / PS5</a></li>
+                        <li><a href="#psp"><i class="fas fa-gamepad"></i> PSP</a></li>
+                        <li><a href="#nintendo"><i class="fas fa-star"></i> Nintendo / Switch</a></li>
+                        <li><a href="#emulators"><i class="fas fa-microchip"></i> Emulators</a></li>
+                        <li><a href="#retro"><i class="fas fa-history"></i> Retro (Java/Symbian)</a></li>
+                        <li><a href="#blackberry"><i class="fas fa-mobile-alt"></i> BlackBerry</a></li>
+                        <li><a href="#terminal"><i class="fas fa-terminal"></i> Terminal</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search games..." onkeyup="searchGames(event)">
+                <button onclick="searchGames()"><i class="fas fa-search"></i></button>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════ HERO SECTION ═══════════ -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🎮 Welcome to <span class="highlight">GameVerse</span></h1>
+            <p>India's #1 Gaming Portal — Free Games for <strong>Android, iOS, PC, PlayStation, PSP, Nintendo, Emulators &amp; Retro</strong></p>
+            <p class="hero-sub">Action • Adventure • Racing • Shooting • RPG • Strategy • Fighting</p>
+            <div class="hero-buttons">
+                <a href="#featured" class="btn btn-primary"><i class="fas fa-fire"></i> Featured Games</a>
+                <a href="#categories" class="btn btn-secondary"><i class="fas fa-th-large"></i> All Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SEARCH SECTION ═══════════ -->
+    <section class="search-section" id="searchSection">
+        <div class="container">
+            <h2><i class="fas fa-search"></i> Search Games</h2>
+            <div class="search-big">
+                <input type="text" id="searchBigInput" placeholder="Search by game name, category, platform, genre...">
+                <button onclick="searchBigGames()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div class="trending-tags">
+                <span>Trending:</span>
+                <a href="#gta">GTA V</a>
+                <a href="#pubg">PUBG</a>
+                <a href="#freefire">Free Fire</a>
+                <a href="#mario">Super Mario</a>
+                <a href="#godofwar">God of War</a>
+                <a href="#fifa">FIFA</a>
+                <a href="#ppsspp">PPSSPP Games</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FEATURED GAMES ═══════════ -->
+    <section class="featured" id="featured">
+        <div class="container">
+            <h2><i class="fas fa-fire"></i> 🔥 Featured &amp; Trending Games</h2>
+            <div class="game-grid" id="featuredGrid">
+                <!-- Cards will be inserted by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PLATFORMS ═══════════ -->
+    <section class="platforms" id="platforms">
+        <div class="container">
+            <h2><i class="fas fa-device"></i> Browse by Platform / Device</h2>
+            <div class="platform-grid">
+                <a href="#android" class="platform-card"><i class="fab fa-android"></i><span>Android</span></a>
+                <a href="#ios" class="platform-card"><i class="fab fa-apple"></i><span>iOS / iPad</span></a>
+                <a href="#windows" class="platform-card"><i class="fab fa-windows"></i><span>Windows</span></a>
+                <a href="#mac" class="platform-card"><i class="fab fa-apple"></i><span>Mac</span></a>
+                <a href="#playstation" class="platform-card"><i class="fab fa-playstation"></i><span>PS4 / PS5</span></a>
+                <a href="#ps2" class="platform-card"><i class="fas fa-compact-disc"></i><span>PS2</span></a>
+                <a href="#psp" class="platform-card"><i class="fas fa-gamepad"></i><span>PSP</span></a>
+                <a href="#nintendo" class="platform-card"><i class="fas fa-star"></i><span>Nintendo/Switch</span></a>
+                <a href="#emulators" class="platform-card"><i class="fas fa-microchip"></i><span>Emulators</span></a>
+                <a href="#retro" class="platform-card"><i class="fas fa-history"></i><span>Java / Symbian</span></a>
+                <a href="#blackberry" class="platform-card"><i class="fas fa-mobile-alt"></i><span>BlackBerry</span></a>
+                <a href="#terminal" class="platform-card"><i class="fas fa-terminal"></i><span>Terminal Games</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CATEGORIES ═══════════ -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2><i class="fas fa-layer-group"></i> Game Categories</h2>
+            <div class="category-grid">
+                <a href="#action" class="category-card action"><i class="fas fa-bolt"></i><span>Action</span></a>
+                <a href="#adventure" class="category-card adventure"><i class="fas fa-compass"></i><span>Adventure</span></a>
+                <a href="#rpg" class="category-card rpg"><i class="fas fa-dragon"></i><span>Role-Playing</span></a>
+                <a href="#strategy" class="category-card strategy"><i class="fas fa-chess"></i><span>Strategy</span></a>
+                <a href="#racing" class="category-card racing"><i class="fas fa-car"></i><span>Racing</span></a>
+                <a href="#fighting" class="category-card fighting"><i class="fas fa-fist-raised"></i><span>Fighting</span></a>
+                <a href="#shooting" class="category-card shooting"><i class="fas fa-crosshairs"></i><span>Shooting (TPP/FPP)</span></a>
+                <a href="#horror" class="category-card horror"><i class="fas fa-ghost"></i><span>Horror</span></a>
+                <a href="#simulation" class="category-card simulation"><i class="fas fa-plane"></i><span>Simulation</span></a>
+                <a href="#sports" class="category-card sports"><i class="fas fa-football-ball"></i><span>Sports</span></a>
+                <a href="#puzzle" class="category-card puzzle"><i class="fas fa-puzzle-piece"></i><span>Puzzle</span></a>
+                <a href="#multiplayer" class="category-card multiplayer"><i class="fas fa-users"></i><span>Multiplayer</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ ALL GAMES SECTION ═══════════ -->
+    <section class="all-games" id="allGames">
+        <div class="container">
+            <h2><i class="fas fa-list"></i> All Games</h2>
+            <div class="filter-bar">
+                <select id="platformFilter" onchange="filterGames()">
+                    <option value="all">All Platforms</option>
+                    <option value="android">Android</option>
+                    <option value="ios">iOS</option>
+                    <option value="windows">Windows PC</option>
+                    <option value="mac">Mac</option>
+                    <option value="ps5">PS5</option>
+                    <option value="ps4">PS4</option>
+                    <option value="ps2">PS2</option>
+                    <option value="psp">PSP</option>
+                    <option value="nintendo">Nintendo</option>
+                    <option value="emulator">Emulator</option>
+                    <option value="java">Java</option>
+                    <option value="symbian">Symbian</option>
+                    <option value="blackberry">BlackBerry</option>
+                    <option value="terminal">Terminal</option>
+                </select>
+                <select id="categoryFilter" onchange="filterGames()">
+                    <option value="all">All Categories</option>
+                    <option value="action">Action</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="rpg">Role-Playing</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="racing">Racing</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="shooting">Shooting</option>
+                    <option value="horror">Horror</option>
+                    <option value="simulation">Simulation</option>
+                    <option value="sports">Sports</option>
+                    <option value="puzzle">Puzzle</option>
+                    <option value="multiplayer">Multiplayer</option>
+                </select>
+                <select id="sortFilter" onchange="filterGames()">
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+            <div class="game-grid" id="allGamesGrid"></div>
+            <div class="load-more">
+                <button onclick="loadMoreGames()" class="btn btn-primary">Load More Games <i class="fas fa-arrow-down"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ DEVICE SPECIFIC ═══════════ -->
+    <section class="device-section" id="deviceWise">
+        <div class="container">
+            <h2><i class="fas fa-mobile-alt"></i> Device Wise Games</h2>
+            <div class="device-grid">
+                <div class="device-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile</h3>
+                    <p>Android, iOS, Java, Symbian</p>
+                </div>
+                <div class="device-item">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Computer</h3>
+                    <p>Windows, Mac, Linux</p>
+                </div>
+                <div class="device-item">
+                    <i class="fas fa-tv"></i>
+                    <h3>Console</h3>
+                    <p>PS2, PS4, PS5, PSP, Nintendo</p>
+                </div>
+                <div class="device-item">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Emulators</h3>
+                    <p>PPSSPP, Dolphin, ePSXe, RetroArch</p>
+                </div>
+                <div class="device-item">
+                    <i class="fas fa-history"></i>
+                    <h3>Retro</h3>
+                    <p>Java, Symbian, BlackBerry</p>
+                </div>
+                <div class="device-item">
+                    <i class="fas fa-terminal"></i>
+                    <h3>Terminal</h3>
+                    <p>CLI Games, ASCII Games</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ STATS ═══════════ -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item"><span class="stat-num" id="totalGames">2500+</span><span>Total Games</span></div>
+            <div class="stat-item"><span class="stat-num">15+</span><span>Platforms</span></div>
+            <div class="stat-item"><span class="stat-num">12</span><span>Categories</span></div>
+            <div class="stat-item"><span class="stat-num">50K+</span><span>Happy Gamers</span></div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SYSTEM REQUIREMENTS ═══════════ -->
+    <section class="system-req" id="systemReqs">
+        <div class="container">
+            <h2><i class="fas fa-cogs"></i> System Requirements — Games by System</h2>
+            <div class="sys-grid">
+                <div class="sys-card"><i class="fab fa-android"></i><h3>Android 5.0+</h3><p>2GB RAM min</p></div>
+                <div class="sys-card"><i class="fab fa-apple"></i><h3>iOS 12.0+</h3><p>iPhone 6S & above</p></div>
+                <div class="sys-card"><i class="fab fa-windows"></i><h3>Windows 7/10/11</h3><p>4GB RAM, DX11</p></div>
+                <div class="sys-card"><i class="fab fa-playstation"></i><h3>PS4 / PS5</h3><p>Firmware latest</p></div>
+                <div class="sys-card"><i class="fas fa-gamepad"></i><h3>PSP / PS Vita</h3><p>CFW supported</p></div>
+                <div class="sys-card"><i class="fas fa-microchip"></i><h3>Emulators</h3><p>PC mid-range</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ NEWSLETTER ═══════════ -->
+    <section class="newsletter">
+        <div class="container">
+            <h2><i class="fas fa-envelope-open-text"></i> Subscribe for New Games</h2>
+            <p>Get latest game updates, reviews and exclusive content directly in your inbox</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-gamepad"></i> GameVerse India</h3>
+                    <p>India's largest free gaming portal. Download games for all platforms, read reviews, and earn through ads.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="admin.html">Admin Panel</a>
+                    <a href="testing.html">Testing</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Top Categories</h3>
+                    <a href="#action">Action Games</a>
+                    <a href="#racing">Racing Games</a>
+                    <a href="#shooting">Shooting Games</a>
+                    <a href="#rpg">RPG Games</a>
+                    <a href="#strategy">Strategy Games</a>
+                    <a href="#multiplayer">Multiplayer</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Top Platforms</h3>
+                    <a href="#android">Android Games</a>
+                    <a href="#windows">PC Games</a>
+                    <a href="#ps5">PS5 Games</a>
+                    <a href="#psp">PSP Games</a>
+                    <a href="#emulators">Emulator Games</a>
+                    <a href="#retro">Retro Games</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 GameVerse India. All Rights Reserved. | Made with <i class="fas fa-heart" style="color: #ff4444;"></i> for Gamers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════ BACK TO TOP ═══════════ -->
+    <button onclick="scrollToTop()" id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
