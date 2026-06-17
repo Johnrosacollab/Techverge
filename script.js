@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   GAMEVERSE INDIA - Complete Gaming Website JS
+   TECHVERGE - Complete Gaming Website JS
    ═══════════════════════════════════════════ */
 
 // ═══════════ GAME DATABASE ═══════════
@@ -11,12 +11,12 @@ const gamesDB = [
     { id: 4, name: "Asphalt 9", platform: "android", category: "racing", rating: 4.7, downloads: "200M+", desc: "Premium arcade racing with console-quality graphics.", popular: true, new: false, img: "🏎️" },
     { id: 5, name: "Clash of Clans", platform: "android", category: "strategy", rating: 4.5, downloads: "500M+", desc: "Build your village and battle globally.", popular: true, new: false, img: "⚔️" },
     { id: 6, name: "Genshin Impact", platform: "android", category: "rpg", rating: 4.7, downloads: "100M+", desc: "Open-world action RPG with gacha elements.", popular: true, new: false, img: "🌍" },
-    
+
     // -- iOS --
     { id: 7, name: "Call of Duty Mobile", platform: "ios", category: "shooting", rating: 4.6, downloads: "300M+", desc: "Console-quality FPS on mobile.", popular: true, new: false, img: "🎯" },
     { id: 8, name: "Among Us", platform: "ios", category: "multiplayer", rating: 4.3, downloads: "500M+", desc: "Social deduction party game.", popular: false, new: false, img: "👾" },
     { id: 9, name: "Minecraft PE", platform: "ios", category: "adventure", rating: 4.7, downloads: "1B+", desc: "Endless creativity and survival.", popular: true, new: false, img: "⛏️" },
-    
+
     // -- Windows PC --
     { id: 10, name: "GTA V", platform: "windows", category: "action", rating: 4.9, downloads: "1B+", desc: "Open-world masterpiece from Rockstar.", popular: true, new: false, img: "🏙️" },
     { id: 11, name: "Valorant", platform: "windows", category: "shooting", rating: 4.5, downloads: "100M+", desc: "Tactical FPP shooter from Riot Games.", popular: true, new: false, img: "🔫" },
@@ -24,61 +24,61 @@ const gamesDB = [
     { id: 13, name: "Cyberpunk 2077", platform: "windows", category: "rpg", rating: 4.2, downloads: "30M+", desc: "Open-world RPG in Night City.", popular: false, new: false, img: "🤖" },
     { id: 14, name: "Forza Horizon 5", platform: "windows", category: "racing", rating: 4.8, downloads: "20M+", desc: "Open-world racing in Mexico.", popular: true, new: false, img: "🏎️" },
     { id: 15, name: "Mortal Kombat 1", platform: "windows", category: "fighting", rating: 4.4, downloads: "10M+", desc: "Brutal fighting game with kameo system.", popular: false, new: true, img: "👊" },
-    
+
     // -- Mac --
     { id: 16, name: "Baldur's Gate 3", platform: "mac", category: "rpg", rating: 4.9, downloads: "15M+", desc: "Critically acclaimed D&D RPG.", popular: true, new: false, img: "🐉" },
     { id: 17, name: "Civilization VI", platform: "mac", category: "strategy", rating: 4.6, downloads: "20M+", desc: "Turn-based strategy empire builder.", popular: false, new: false, img: "🏛️" },
-    
+
     // -- PS5 --
     { id: 18, name: "Spider-Man 2", platform: "ps5", category: "action", rating: 4.9, downloads: "15M+", desc: "Swing through Marvel's NYC.", popular: true, new: false, img: "🕷️" },
     { id: 19, name: "God of War Ragnarok", platform: "ps5", category: "action", rating: 4.8, downloads: "20M+", desc: "Epic Norse mythology adventure.", popular: true, new: false, img: "⚔️" },
     { id: 20, name: "Horizon Forbidden West", platform: "ps5", category: "adventure", rating: 4.7, downloads: "12M+", desc: "Open-world post-apocalyptic adventure.", popular: false, new: false, img: "🤖" },
     { id: 21, name: "Gran Turismo 7", platform: "ps5", category: "racing", rating: 4.6, downloads: "10M+", desc: "Real driving simulator.", popular: false, new: false, img: "🏎️" },
-    
+
     // -- PS4 --
     { id: 22, name: "The Last of Us Part II", platform: "ps4", category: "action", rating: 4.7, downloads: "30M+", desc: "Emotional post-apocalyptic journey.", popular: false, new: false, img: "🌲" },
     { id: 23, name: "Red Dead Redemption 2", platform: "ps4", category: "adventure", rating: 4.9, downloads: "60M+", desc: "Wild West open-world masterpiece.", popular: true, new: false, img: "🤠" },
     { id: 24, name: "Bloodborne", platform: "ps4", category: "action", rating: 4.8, downloads: "10M+", desc: "Gothic horror action RPG.", popular: false, new: false, img: "🩸" },
-    
+
     // -- PS2 --
     { id: 25, name: "GTA: San Andreas", platform: "ps2", category: "action", rating: 4.9, downloads: "20M+", desc: "Classic open-world from Rockstar.", popular: true, new: false, img: "🏙️" },
     { id: 26, name: "God of War II", platform: "ps2", category: "action", rating: 4.7, downloads: "10M+", desc: "Kratos' epic Greek adventure.", popular: false, new: false, img: "⚔️" },
     { id: 27, name: "Shadow of the Colossus", platform: "ps2", category: "adventure", rating: 4.8, downloads: "5M+", desc: "Artistic masterpiece of giant battles.", popular: false, new: false, img: "🏛️" },
     { id: 28, name: "Need for Speed Most Wanted", platform: "ps2", category: "racing", rating: 4.7, downloads: "15M+", desc: "Best street racing game ever.", popular: true, new: false, img: "🚗" },
-    
+
     // -- PSP --
     { id: 29, name: "GTA: Vice City Stories", platform: "psp", category: "action", rating: 4.5, downloads: "8M+", desc: "GTA on handheld! Classic.", popular: true, new: false, img: "🌴" },
     { id: 30, name: "God of War: Chains of Olympus", platform: "psp", category: "action", rating: 4.4, downloads: "5M+", desc: "Kratos on PSP.", popular: false, new: false, img: "⚔️" },
     { id: 31, name: "Monster Hunter Freedom Unite", platform: "psp", category: "action", rating: 4.6, downloads: "6M+", desc: "Hunt monsters on the go.", popular: false, new: false, img: "🐉" },
     { id: 32, name: "Tekken 6", platform: "psp", category: "fighting", rating: 4.3, downloads: "4M+", desc: "Arcade fighting on PSP.", popular: false, new: false, img: "👊" },
-    
+
     // -- Nintendo / Switch --
     { id: 33, name: "Super Mario Odyssey", platform: "nintendo", category: "adventure", rating: 4.9, downloads: "30M+", desc: "Mario's globetrotting 3D adventure.", popular: true, new: false, img: "⭐" },
     { id: 34, name: "The Legend of Zelda: Tears of the Kingdom", platform: "nintendo", category: "adventure", rating: 5.0, downloads: "25M+", desc: "Groundbreaking open-air adventure.", popular: true, new: false, img: "🗡️" },
     { id: 35, name: "Pokemon Scarlet/Violet", platform: "nintendo", category: "rpg", rating: 4.2, downloads: "30M+", desc: "Open-world Pokemon adventure.", popular: false, new: false, img: "⚡" },
     { id: 36, name: "Mario Kart 8 Deluxe", platform: "nintendo", category: "racing", rating: 4.8, downloads: "50M+", desc: "Best kart racing game ever.", popular: true, new: false, img: "🏎️" },
-    
+
     // -- Emulators (PPSSPP / Dolphin / ePSXe / RetroArch) --
     { id: 37, name: "PPSSPP - God of War Ghost of Sparta", platform: "emulator", category: "action", rating: 4.5, downloads: "10M+", desc: "Play PSP God of War on PC/Android via PPSSPP.", popular: true, new: false, img: "⚔️" },
     { id: 38, name: "Dolphin - Super Mario Galaxy 2", platform: "emulator", category: "adventure", rating: 4.8, downloads: "8M+", desc: "Wii classic on Dolphin emulator.", popular: false, new: false, img: "⭐" },
     { id: 39, name: "ePSXe - Castlevania Symphony of Night", platform: "emulator", category: "action", rating: 4.7, downloads: "5M+", desc: "PS1 classic on ePSXe emulator.", popular: false, new: false, img: "🧛" },
     { id: 40, name: "RetroArch - All Retro Games", platform: "emulator", category: "multiplayer", rating: 4.4, downloads: "20M+", desc: "All-in-one retro emulation platform.", popular: true, new: false, img: "🕹️" },
-    
+
     // -- Java (Feature Phones) --
     { id: 41, name: "Snake (Nokia Classic)", platform: "java", category: "puzzle", rating: 4.0, downloads: "100M+", desc: "The original mobile classic.", popular: false, new: false, img: "🐍" },
     { id: 42, name: "Bounce (Nokia)", platform: "java", category: "adventure", rating: 4.2, downloads: "50M+", desc: "Classic Nokia ball game.", popular: false, new: false, img: "⚪" },
     { id: 43, name: "Prince of Persia (Java)", platform: "java", category: "action", rating: 4.3, downloads: "20M+", desc: "Java port of the classic.", popular: false, new: false, img: "🗡️" },
     { id: 44, name: "Asphalt 3 (Java)", platform: "java", category: "racing", rating: 4.1, downloads: "30M+", desc: "Racing on feature phones!", popular: false, new: false, img: "🏎️" },
-    
+
     // -- Symbian (Nokia S60) --
     { id: 45, name: "N-Gage - Tony Hawk Pro Skater", platform: "symbian", category: "sports", rating: 4.2, downloads: "5M+", desc: "Skateboarding on Symbian N-Gage.", popular: false, new: false, img: "🛹" },
     { id: 46, name: "Gameloft GT Racing (Symbian)", platform: "symbian", category: "racing", rating: 4.0, downloads: "10M+", desc: "Symbian racing game.", popular: false, new: false, img: "🏎️" },
     { id: 47, name: "Nokia N-Gage - Pathway to Glory", platform: "symbian", category: "strategy", rating: 4.1, downloads: "3M+", desc: "WWII strategy on N-Gage.", popular: false, new: false, img: "🎖️" },
-    
+
     // -- BlackBerry --
     { id: 48, name: "BrickBreaker (BlackBerry)", platform: "blackberry", category: "puzzle", rating: 4.3, downloads: "40M+", desc: "Classic BlackBerry brick breaker.", popular: false, new: false, img: "🧱" },
     { id: 49, name: "Texas Hold'em (BlackBerry)", platform: "blackberry", category: "strategy", rating: 4.0, downloads: "15M+", desc: "Poker on BlackBerry.", popular: false, new: false, img: "🃏" },
-    
+
     // -- Terminal / CLI Games --
     { id: 50, name: "Nethack", platform: "terminal", category: "rpg", rating: 4.5, downloads: "5M+", desc: "Classic dungeon crawler roguelike.", popular: false, new: false, img: "💀" },
     { id: 51, name: "Dwarf Fortress", platform: "terminal", category: "strategy", rating: 4.7, downloads: "3M+", desc: "Deepest simulation game ever.", popular: false, new: false, img: "⛏️" },
@@ -279,7 +279,7 @@ function filterGames() {
     const platformFilter = document.getElementById('platformFilter');
     const categoryFilter = document.getElementById('categoryFilter');
     const sortFilter = document.getElementById('sortFilter');
-    
+
     if (!platformFilter) return;
 
     const platformVal = platformFilter.value;
@@ -312,7 +312,7 @@ function searchGames(event) {
 
     const input = document.getElementById('searchInput');
     if (!input) return;
-    
+
     const query = input.value.toLowerCase().trim();
     const resultsBox = document.getElementById('searchResults');
     if (!resultsBox) return;
@@ -355,7 +355,7 @@ document.addEventListener('click', (e) => {
 function searchBigGames() {
     const input = document.getElementById('searchBigInput');
     if (!input) return;
-    
+
     const query = input.value.toLowerCase().trim();
     if (query === '') return;
 
