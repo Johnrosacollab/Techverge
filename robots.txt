@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin.html
 Disallow: /testing.html
 
-Sitemap: https://www.gameverseindia.com/sitemap.xml
+Sitemap: https://www.techverge.com/sitemap.xml
