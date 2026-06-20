@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════
-   TECHVERGE - Live Operational Core Engine Sync
-   ═══════════════════════════════════════════ */
-
 const BACKEND_URL = "https://techverge-backend.onrender.com/api/games";
 let gamesDB = [];
 
@@ -9,74 +5,100 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchLiveGames();
 });
 
-// 1. Live Fetch Request on Load Execution
 async function fetchLiveGames() {
     try {
         const response = await fetch(BACKEND_URL);
-        if (!response.ok) throw new Error("Backend server cluster down");
+        if (!response.ok) throw new Error("Server communication break");
         gamesDB = await response.json();
         
-        // Push dynamic updates to elements if present
-        renderDashboardView();
-        renderHomeGrid();
+        if (document.getElementById('liveAdminTableBody')) renderDashboardView();
+        if (document.getElementById('featuredGrid')) renderHomeGrid();
     } catch (err) {
-        console.error("Critical API fetch failed:", err);
+        console.error("Fetch status failed:", err);
     }
 }
 
-// 2. Control Form view Box state structure (Overrides the old generic alert popup)
 window.toggleAddGameForm = function() {
     const box = document.getElementById('addGameFormBox');
-    if (box) {
-        box.style.display = (box.style.display === "block") ? "none" : "block";
-    }
+    if (box) box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 
-// 3. Render dynamic indexes in table rows and analytics counters
-function renderDashboardView() {
-    const tbody = document.getElementById('liveAdminTableBody');
-    const statGames = document.getElementById('statGames');
-    const statPlatforms = document.getElementById('statPlatforms');
-    const statCategories = document.getElementById('statCategories');
-    const statDownloads = document.getElementById('statDownloads');
-
-    if (statGames) statGames.textContent = gamesDB.length;
-    if (statPlatforms) {
-        const platformSet = new Set(gamesDB.map(g => g.platform?.toLowerCase()));
-        statPlatforms.textContent = platformSet.size;
-    }
-    if (statCategories) {
-        const catSet = new Set(gamesDB.map(g => g.category?.toLowerCase()));
-        statCategories.textContent = catSet.size;
-    }
-
-    if (!tbody) return;
-    tbody.innerHTML = '';
+// 1. Home Grid Logic (Cards click mechanism configured)
+function renderHomeGrid() {
+    const featuredGrid = document.getElementById('featuredGrid');
+    if (!featuredGrid) return;
+    featuredGrid.innerHTML = '';
 
     if (gamesDB.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#8a99ad; padding:20px;">No games found in Atlas DB. Add your first game!</td></tr>`;
+        featuredGrid.innerHTML = `<p style="color:#8a99ad;">No games hosted yet.</p>`;
         return;
     }
+
+    gamesDB.forEach((game, index) => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        // Triggers openGameModal passing current dynamic database array reference index
+        card.setAttribute('onclick', `openGameModal(${index})`);
+        card.innerHTML = `
+            <div style="font-size:3rem; margin-bottom:10px; text-align:center;">🎮</div>
+            <div class="game-info">
+                <h3 style="color:#fff; margin-bottom:8px;">${game.name}</h3>
+                <p style="color:#8a99ad; font-size:0.85rem; height:40px; overflow:hidden;">${game.desc || ''}</p>
+                <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:0.85rem; color:#ff7a00;">
+                    <span><i class="fas fa-star"></i> ${game.rating}</span>
+                    <span><i class="fas fa-download"></i> ${game.downloads}</span>
+                </div>
+            </div>
+        `;
+        featuredGrid.appendChild(card);
+    });
+}
+
+// 2. Open pop-up detail and inject dynamic target download values
+window.openGameModal = function(index) {
+    const game = gamesDB[index];
+    if (!game) return;
+
+    document.getElementById('modalGameTitle').textContent = game.name;
+    document.getElementById('modalGamePlatform').textContent = "Platform: " + (game.platform || 'N/A');
+    document.getElementById('modalGameDesc').textContent = game.desc || 'No description provided.';
+    document.getElementById('modalGameRating').textContent = "⭐ " + game.rating;
+    document.getElementById('modalGameDownloads').innerHTML = `<i class="fas fa-download"></i> ` + game.downloads;
+    
+    // Bind real download target database strings to button href element
+    const dlBtn = document.getElementById('modalDownloadBtn');
+    dlBtn.href = game.downloadUrl || "#";
+
+    document.getElementById('gameDetailModal').style.display = "flex";
+}
+
+window.closeGameModal = function() {
+    document.getElementById('gameDetailModal').style.display = "none";
+}
+
+// 3. Admin View Render
+function renderDashboardView() {
+    const tbody = document.getElementById('liveAdminTableBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
 
     gamesDB.forEach(game => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td><strong>${game.name}</strong></td>
-            <td><span style="background:#243150; padding:4px 8px; border-radius:4px; font-size:0.85rem;">${game.platform}</span></td>
+            <td>${game.platform}</td>
             <td>${game.category}</td>
             <td>⭐ ${game.rating}</td>
-            <td>${game.downloads || '0'}</td>
+            <td>${game.downloads}</td>
             <td>
-                <button onclick="deleteDatabaseEntry('${game._id}')" style="background:#ff3333; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">
-                    <i class="fas fa-trash"></i>
-                </button>
+                <button onclick="deleteDatabaseEntry('${game._id}')" style="background:#ff3333; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;"><i class="fas fa-trash"></i></button>
             </td>
         `;
         tbody.appendChild(tr);
     });
 }
 
-// 4. Submit logic hook straight to Render instance backend route
+// 4. Submit logic tracking download url payload properties 
 window.handleRealFormSubmit = async function(event) {
     event.preventDefault();
 
@@ -86,6 +108,7 @@ window.handleRealFormSubmit = async function(event) {
         category: document.getElementById('gameCategory').value,
         rating: parseFloat(document.getElementById('gameRating').value) || 4.5,
         downloads: document.getElementById('gameDownloads').value || "10M+",
+        downloadUrl: document.getElementById('gameDownloadUrl').value, // Saved directly to database payload schema
         desc: document.getElementById('gameDesc').value
     };
 
@@ -97,53 +120,22 @@ window.handleRealFormSubmit = async function(event) {
         });
 
         if (response.ok) {
-            alert("SUCCESS: Game added into dynamic cluster database!");
+            alert("SUCCESS: Game live with redirect download links!");
             document.getElementById('realAddGameForm').reset();
-            toggleAddGameForm(); // Collapse form container block
-            fetchLiveGames(); // Refresh table index layout
+            toggleAddGameForm();
+            fetchLiveGames();
         } else {
-            alert("ERROR: Server rejected form payload specifications.");
+            alert("Server storage synchronization error.");
         }
     } catch (err) {
-        alert("CRITICAL: Connection loss with Render instance router.");
+        alert("Network deployment execution failure.");
     }
 }
 
-// 5. Delete operation trigger
 window.deleteDatabaseEntry = async function(id) {
-    if (!confirm("Are you sure you want to completely erase this entry?")) return;
+    if (!confirm("Delete this?")) return;
     try {
         const response = await fetch(`${BACKEND_URL}/${id}`, { method: 'DELETE' });
-        if (response.ok) {
-            alert("Entry removed cleanly.");
-            fetchLiveGames();
-        }
-    } catch (err) {
-        alert("Error requesting backend endpoint router drop execution.");
-    }
-}
-
-// 6. Index Home Grid Integration fallback hook
-function renderHomeGrid() {
-    const featuredGrid = document.getElementById('featuredGrid');
-    if (!featuredGrid) return;
-    featuredGrid.innerHTML = '';
-
-    gamesDB.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.innerHTML = `
-            <div class="game-img">🎮</div>
-            <div class="game-info">
-                <h3>${game.name}</h3>
-                <p>${game.desc || ''}</p>
-                <div class="game-meta">
-                    <span><i class="fas fa-star"></i> ${game.rating}</span>
-                    <span><i class="fas fa-download"></i> ${game.downloads}</span>
-                </div>
-                <button class="btn btn-primary" style="margin-top:10px; width:100%;">Download</button>
-            </div>
-        `;
-        featuredGrid.appendChild(card);
-    });
+        if (response.ok) fetchLiveGames();
+    } catch (err) { console.error(err); }
 }
