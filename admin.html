@@ -3,112 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - TechVerge</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard - TechVerge</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .admin-dashboard { max-width: 1200px; margin: 100px auto 40px auto; padding: 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: var(--bg-card, #151d30); padding: 20px; border-radius: var(--radius, 8px); border: 1px solid var(--border, #243150); text-align: center; }
+        .stat-card i { font-size: 2rem; color: var(--accent, #ff7a00); margin-bottom: 10px; }
+        .stat-card h3 { font-size: 2rem; margin: 10px 0; color: #fff; }
+        .action-bar { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        
+        /* Form Section Toggle Design */
+        .form-container-box { background: var(--bg-card, #151d30); padding: 25px; border-radius: var(--radius, 8px); border: 1px solid var(--border, #243150); margin-bottom: 30px; display: none; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; color: #8a99ad; font-size: 0.9rem; }
+        .form-control { width: 100%; padding: 10px; background: var(--bg-primary, #0b0f19); border: 1px solid var(--border, #243150); border-radius: 4px; color: #fff; }
+        
+        .table-wrapper { overflow-x: auto; background: var(--bg-card, #151d30); border-radius: var(--radius, 8px); border: 1px solid var(--border, #243150); padding: 20px; }
+        .admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .admin-table th, .admin-table td { padding: 12px; border-bottom: 1px solid var(--border, #243150); color: #fff; }
+        .admin-table th { color: #8a99ad; }
+    </style>
 </head>
 <body>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> TechVerge</a>
-            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
-                <span></span><span></span><span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
+            <ul class="nav-menu">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="admin.html" class="active"><i class="fas fa-cog"></i> Admin</a></li>
-                <li><a href="testing.html"><i class="fas fa-vial"></i> Testing</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-                <li>
-                    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </li>
             </ul>
         </div>
     </nav>
 
-    <section class="page-header">
-        <h1><i class="fas fa-cog"></i> Admin Dashboard</h1>
-        <p>Manage your gaming website</p>
-    </section>
-
-    <section class="content-page">
-        <div class="container">
-            <div class="admin-stats">
-                <div class="admin-stat-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>0</h3>
-                    <p>Total Games</p>
-                </div>
-                <div class="admin-stat-card">
-                    <i class="fas fa-device"></i>
-                    <h3>0</h3>
-                    <p>Platforms</p>
-                </div>
-                <div class="admin-stat-card">
-                    <i class="fas fa-layer-group"></i>
-                    <h3>0</h3>
-                    <p>Categories</p>
-                </div>
-                <div class="admin-stat-card">
-                    <i class="fas fa-download"></i>
-                    <h3>0</h3>
-                    <p>Total Downloads</p>
-                </div>
+    <main class="admin-dashboard">
+        <h2 style="color: #fff; margin-bottom: 20px;"><i class="fas fa-cog"></i> Admin Dashboard</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-gamepad"></i>
+                <h3 id="statGames">0</h3>
+                <p style="color:#8a99ad;">Total Games</p>
             </div>
-
-            <div class="admin-tools" style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
-                <button class="btn btn-primary" onclick="alert('Add new game form opens here')"><i class="fas fa-plus"></i> Add Game</button>
-                <button class="btn btn-secondary" onclick="alert('Export games list as CSV')"><i class="fas fa-file-export"></i> Export CSV</button>
-                <button class="btn btn-secondary" onclick="alert('Cache cleared!')"><i class="fas fa-broom"></i> Clear Cache</button>
-                <button class="btn btn-secondary" onclick="alert('Generating sitemap... Done!')"><i class="fas fa-sitemap"></i> Generate Sitemap</button>
+            <div class="stat-card">
+                <i class="fas fa-layer-group"></i>
+                <h3 id="statPlatforms">0</h3>
+                <p style="color:#8a99ad;">Platforms</p>
             </div>
+            <div class="stat-card">
+                <i class="fas fa-cubes"></i>
+                <h3 id="statCategories">0</h3>
+                <p style="color:#8a99ad;">Categories</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-download"></i>
+                <h3 id="statDownloads">0</h3>
+                <p style="color:#8a99ad;">Total Downloads</p>
+            </div>
+        </div>
 
-            <div class="admin-table-wrap">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Game Name</th>
-                            <th>Platform</th>
-                            <th>Category</th>
-                            <th>Rating</th>
-                            <th>Downloads</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Populated by JavaScript -->
+        <div class="action-bar">
+            <button class="btn btn-primary" onclick="toggleAddGameForm()"><i class="fas fa-plus"></i> Add Game</button>
+            <button class="btn" style="background:#243150; color:#fff; border:none; padding:10px 20px; border-radius:4px;"><i class="fas fa-file-csv"></i> Export CSV</button>
+        </div>
+
+        <div class="form-container-box" id="addGameFormBox">
+            <h3 style="color:var(--accent, #ff7a00); margin-bottom:15px;"><i class="fas fa-plus-circle"></i> Enter Game Specs</h3>
+            <form id="realAddGameForm" onsubmit="handleRealFormSubmit(event)">
+                <div class="form-group">
+                    <label>Game Name</label>
+                    <input type="text" id="gameName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Platform Target</label>
+                    <select id="gamePlatform" class="form-control">
+                        <option value="android">Android</option>
+                        <option value="windows">Windows PC</option>
+                        <option value="ps5">PS5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="gameCategory" placeholder="e.g. action" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Rating (1 to 5)</label>
+                    <input type="number" id="gameRating" step="0.1" max="5" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Downloads Static Text</label>
+                    <input type="text" id="gameDownloads" placeholder="50M+" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Short Description</label>
+                    <textarea id="gameDesc" rows="3" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Upload To MongoDB Atlas</button>
+            </form>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Game Name</th>
+                        <th>Platform</th>
+                        <th>Category</th>
+                        <th>Rating</th>
+                        <th>Downloads</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="liveAdminTableBody">
                     </tbody>
-                </table>
-            </div>
+            </table>
         </div>
-    </section>
+    </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3><i class="fas fa-gamepad"></i> TechVerge</h3>
-                    <p>India's largest free gaming portal.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <a href="index.html">Home</a>
-                    <a href="admin.html">Admin</a>
-                    <a href="testing.html">Testing</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025-2026 TechVerge. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <button onclick="scrollToTop()" id="backToTop"><i class="fas fa-arrow-up"></i></button>
     <script src="script.js"></script>
 </body>
 </html>
