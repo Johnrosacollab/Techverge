@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechVerge - Download Games</title>
+    <title>TechVerge - Gaming Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        .featured-games { padding: 40px 20px; max-width: 1200px; margin: 80px auto 0 auto; }
-        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .game-card { background: #151d30; border: 1px solid #243150; border-radius: 8px; overflow: hidden; cursor: pointer; transition: 0.3s; padding: 15px; }
-        .game-card:hover { transform: translateY(-5px); border-color: #ff7a00; }
-        
-        /* Modal Popup Dynamic styling box */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; }
-        .modal-content { background: #151d30; border: 2px solid #243150; width: 90%; max-width: 500px; padding: 25px; border-radius: 8px; color: #fff; position: relative; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: #8a99ad; cursor: pointer; }
-        .btn-download-now { display: block; text-align: center; background: #ff7a00; color: #fff; text-decoration: none; padding: 12px; border-radius: 4px; font-weight: bold; margin-top: 20px; }
+        /* CSS Overwrite blocks se bachne ke liye modal styling inline head me */
+        .tv-custom-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 10, 19, 0.9); z-index: 99999; justify-content: center; align-items: center; padding: 20px; }
+        .tv-modal-box { background: #131926; border: 2px solid #202b40; border-radius: 12px; max-width: 500px; width: 100%; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; animation: fadeIn 0.2s ease-out; }
+        .tv-modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: #64748b; cursor: pointer; transition: 0.2s; }
+        .tv-modal-close:hover { color: #ff7a00; }
+        .tv-dl-btn { display: inline-block; width: 100%; text-align: center; background: linear-gradient(135deg, #ff7a00, #ff5500); color: #fff !important; font-weight: bold; padding: 14px; border-radius: 6px; text-decoration: none; margin-top: 25px; box-shadow: 0 4px 15px rgba(255,122,0,0.3); transition: 0.2s; }
+        .tv-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,122,0,0.5); }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -24,29 +22,31 @@
         <div class="nav-container">
             <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> TechVerge</a>
             <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="admin.html">Admin Dashboard</a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin Dashboard</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="featured-games">
-        <h2 style="color: #fff; margin-bottom: 25px;"><i class="fas fa-fire"></i> Featured & Trending Games</h2>
-        <div class="games-grid" id="featuredGrid">
-            </div>
-    </section>
+    <main style="margin-top: 100px;">
+        <section class="featured-games" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #fff; font-size: 2rem; margin-bottom: 30px;"><i class="fas fa-fire" style="color:#ff7a00;"></i> Featured & Trending Games</h2>
+            <div class="games-grid" id="featuredGrid">
+                </div>
+        </section>
+    </main>
 
-    <div class="modal-overlay" id="gameDetailModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeGameModal()">&times;</span>
-            <h2 id="modalGameTitle" style="color: #ff7a00; margin-bottom: 10px;">Game Title</h2>
-            <p id="modalGamePlatform" style="font-size:0.9rem; color:#8a99ad; margin-bottom: 15px;">Platform: </p>
-            <p id="modalGameDesc" style="line-height: 1.5; color:#e0e0e0; margin-bottom: 15px;">Description text content.</p>
-            <div style="display:flex; justify-content:space-between; font-size:0.9rem; color:#ff7a00; border-top:1px solid #243150; padding-top:10px;">
-                <span id="modalGameRating">⭐ 4.5</span>
-                <span id="modalGameDownloads"><i class="fas fa-download"></i> 10M+</span>
+    <div class="tv-custom-modal" id="gameDetailModal">
+        <div class="tv-modal-box">
+            <span class="tv-modal-close" onclick="closeGameModal()">&times;</span>
+            <h2 id="modalGameTitle" style="color: #fff; margin-bottom: 10px; font-size: 1.8rem;">Game Title</h2>
+            <div style="margin-bottom: 15px;"><span id="modalGamePlatform" style="background:#1e293b; color:#ff7a00; font-size:0.8rem; padding:4px 8px; border-radius:4px; font-weight:bold;">Platform</span></div>
+            <p id="modalGameDesc" style="color: #94a3b8; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px;">Description text.</p>
+            <div style="display: flex; justify-content: space-between; border-top: 1px solid #202b40; padding-top: 15px; color: #cbd5e1; font-size: 0.9rem;">
+                <span id="modalGameRating">⭐ 0.0</span>
+                <span id="modalGameDownloads"><i class="fas fa-download"></i> 0</span>
             </div>
-            <a href="#" id="modalDownloadBtn" target="_blank" class="btn-download-now"><i class="fas fa-arrow-alt-circle-down"></i> Download Now</a>
+            <a href="#" id="modalDownloadBtn" target="_blank" class="tv-dl-btn"><i class="fas fa-cloud-download-alt"></i> Download Asset Now</a>
         </div>
     </div>
 
