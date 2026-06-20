@@ -1,63 +1,66 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - TechVerge</title>
+    <title>TechVerge - Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        .form-container-box { background: #151d30; padding: 25px; border-radius: 8px; border: 1px solid #243150; margin: 25px 0; display: none; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 6px; color: #8a99ad; font-size: 0.9rem; }
-        .form-control { width: 100%; padding: 10px; background: #0b0f19; border: 1px solid #243150; border-radius: 4px; color: #fff; box-sizing: border-box; }
-        .btn-submit { background: #ff7a00; color: #fff; border: none; padding: 12px 24px; cursor: pointer; border-radius: 4px; font-weight: bold; width: 100%; }
-        .admin-table-wrapper { overflow-x: auto; background: #151d30; border-radius: 8px; border: 1px solid #243150; padding: 15px; margin-top: 20px; }
-        .admin-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .admin-table th, .admin-table td { padding: 12px; border-bottom: 1px solid #243150; color: #fff; }
-    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo"><i class="fas fa-gamepad"></i> TechVerge</a>
             <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="admin.html" class="active">Admin Dashboard</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="admin.html" class="active"><i class="fas fa-cog"></i> Admin Dashboard</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="admin-dashboard" style="max-width: 1200px; margin: 100px auto; padding: 0 20px;">
-        <h2 style="color: #fff;"><i class="fas fa-cog"></i> Admin Dashboard</h2>
-        
-        <div style="display: flex; gap: 15px; margin: 20px 0;">
-            <button class="btn btn-primary" onclick="toggleAddGameForm()"><i class="fas fa-plus"></i> Add Game</button>
+    <div class="admin-container" style="max-width: 1200px; margin: 100px auto; padding: 20px; color: #fff;">
+        <h1 style="margin-bottom: 20px;"><i class="fas fa-sliders-h"></i> Admin Dashboard</h1>
+        <p style="color: #8a99ad; margin-bottom: 30px;">Manage your gaming website database assets.</p>
+
+        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px;">
+            <div style="background:#151d30; padding:20px; border-radius:8px; border:1px solid #243150; text-align:center;">
+                <h3 style="color:#ff7a00; font-size:2rem;" id="statGames">0</h3><p style="color:#8a99ad;">Total Games</p>
+            </div>
+            <div style="background:#151d30; padding:20px; border-radius:8px; border:1px solid #243150; text-align:center;">
+                <h3 style="color:#ff7a00; font-size:2rem;" id="statPlatforms">0</h3><p style="color:#8a99ad;">Platforms</p>
+            </div>
+            <div style="background:#151d30; padding:20px; border-radius:8px; border:1px solid #243150; text-align:center;">
+                <h3 style="color:#ff7a00; font-size:2rem;" id="statCategories">0</h3><p style="color:#8a99ad;">Categories</p>
+            </div>
         </div>
 
-        <div class="form-container-box" id="addGameFormBox">
+        <button class="btn btn-primary" onclick="toggleAddGameForm()" style="background:#ff7a00; color:#fff; padding:12px 24px; border:none; border-radius:4px; font-weight:bold; cursor:pointer; margin-bottom:25px;">
+            <i class="fas fa-plus"></i> Add Game
+        </button>
+
+        <div id="addGameFormBox" style="display:none; background:#151d30; padding:25px; border-radius:8px; border:1px solid #243150; margin-bottom:30px;">
+            <h3 style="margin-bottom:20px; color:#ff7a00;">Add Game to MongoDB Cloud</h3>
             <form id="realAddGameForm" onsubmit="handleRealFormSubmit(event)">
-                <div class="form-group"><label>Game Name</label><input type="text" id="gameName" class="form-control" required></div>
-                <div class="form-group"><label>Platform</label><input type="text" id="gamePlatform" class="form-control" required></div>
-                <div class="form-group"><label>Category</label><input type="text" id="gameCategory" class="form-control" required></div>
-                <div class="form-group"><label>Rating</label><input type="number" id="gameRating" step="0.1" max="5" class="form-control" required></div>
-                <div class="form-group"><label>Downloads</label><input type="text" id="gameDownloads" class="form-control" required></div>
-                <div class="form-group"><label>Download URL (Drive / Mega / Mediafire link)</label><input type="url" id="gameDownloadUrl" placeholder="https://..." class="form-control" required></div>
-                <div class="form-group"><label>Short Description</label><textarea id="gameDesc" rows="3" class="form-control" required></textarea></div>
-                <button type="submit" class="btn-submit">Save to Database</button>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Game Name</label><input type="text" id="gameName" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Platform (e.g. PC, Android)</label><input type="text" id="gamePlatform" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Category</label><input type="text" id="gameCategory" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Rating (Out of 5.0)</label><input type="number" id="gameRating" step="0.1" max="5" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Downloads Count</label><input type="text" id="gameDownloads" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Direct Download Link (Drive / Mega Server URL)</label><input type="url" id="gameDownloadUrl" placeholder="https://..." style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></div>
+                <div style="margin-bottom:15px;"><label style="display:block; margin-bottom:5px; color:#8a99ad;">Short Description</label><textarea id="gameDesc" rows="3" style="width:100%; padding:10px; background:#0b0f19; border:1px solid #243150; color:#fff; border-radius:4px;" required></textarea></div>
+                <button type="submit" style="background:#ff7a00; color:#fff; border:none; padding:12px; width:100%; border-radius:4px; font-weight:bold; cursor:pointer;">Save to Database</button>
             </form>
         </div>
 
-        <div class="admin-table-wrapper">
-            <table class="admin-table">
+        <div style="background:#151d30; padding:20px; border-radius:8px; border:1px solid #243150; overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
                 <thead>
-                    <tr><th>Name</th><th>Platform</th><th>Category</th><th>Rating</th><th>Downloads</th><th>Actions</th></tr>
+                    <tr style="border-bottom:2px solid #243150; color:#8a99ad;"><th style="padding:12px;">Game Name</th><th style="padding:12px;">Platform</th><th style="padding:12px;">Category</th><th style="padding:12px;">Rating</th><th style="padding:12px;">Downloads</th><th style="padding:12px;">Actions</th></tr>
                 </thead>
                 <tbody id="liveAdminTableBody"></tbody>
             </table>
         </div>
-    </section>
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
